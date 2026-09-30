@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FrameSync Studio | Professional Post-Production Hub</title>
+  <title>FrameSync Studio | Post-Production Workspace</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app-layout">
@@ -17,7 +17,7 @@
         <div class="logo-icon">FS</div>
         <div class="brand-text">
           <h1>FrameSync</h1>
-          <span>STUDIO v2.4</span>
+          <span>STUDIO v2.5</span>
         </div>
       </div>
 
@@ -43,7 +43,7 @@
       <div class="sidebar-footer">
         <div class="user-status">
           <span class="status-dot"></span>
-          <span>Sync Engine Active</span>
+          <span>Clean Workspace Active</span>
         </div>
       </div>
     </aside>
@@ -54,10 +54,10 @@
       <header class="top-header">
         <div class="header-title">
           <h2 id="page-title">Content Pipeline</h2>
-          <p id="page-subtitle">Real-time status tracking for active production cuts</p>
+          <p id="page-subtitle">Real-time status tracking for active video production cuts</p>
         </div>
         <div class="header-actions">
-          <button class="btn btn-secondary" id="open-client-modal">+ Client Portal Link</button>
+          <button class="btn btn-secondary" id="btn-clear-data">Clear All Workspace Data</button>
           <button class="btn btn-primary" id="open-project-modal">+ New Project</button>
         </div>
       </header>
@@ -106,14 +106,14 @@
             <div class="video-screen">
               <div class="play-overlay">
                 <div class="play-btn-circle">▶</div>
-                <div class="timecode-display" id="player-timecode">01:14:08</div>
+                <div class="timecode-display" id="player-timecode">00:00:00</div>
               </div>
             </div>
             <div class="player-controls">
-              <div class="timeline-bar"><div class="timeline-progress" style="width: 35%;"></div></div>
+              <div class="timeline-bar"><div class="timeline-progress" style="width: 0%;"></div></div>
               <div class="control-buttons">
                 <button class="btn-icon">⏯</button>
-                <span class="tc-readout">01:14:08 / 03:45:00</span>
+                <span class="tc-readout">00:00:00 / 00:00:00</span>
                 <button class="btn btn-secondary btn-sm" id="btn-pin-tc">+ Pin Timecode</button>
               </div>
             </div>
@@ -122,11 +122,11 @@
           <div class="revisions-panel">
             <div class="panel-header">
               <h3>Timecode Notes & Cuts</h3>
-              <span class="badge">4 Notes</span>
+              <span class="badge" id="revision-count">0 Notes</span>
             </div>
             <div class="revision-inputs">
-              <input type="text" id="rev-tc" placeholder="01:14" class="input-tc">
-              <input type="text" id="rev-text" placeholder="Add edit instruction (e.g., Cut frame jump)...">
+              <input type="text" id="rev-tc" placeholder="00:00" class="input-tc">
+              <input type="text" id="rev-text" placeholder="Add edit instruction...">
               <button class="btn btn-primary" id="btn-add-rev">Add</button>
             </div>
             <ul class="revision-list" id="revision-list"></ul>
@@ -140,14 +140,12 @@
           <div class="vault-card">
             <h3>Raw Footage Drives</h3>
             <p>Cloud links for high-res camera cards & audio.</p>
-            <div class="link-item"><span class="link-label">Main A-Cam (BRAW)</span> <a href="#" class="link-btn">Open Drive ↗</a></div>
-            <div class="link-item"><span class="link-label">B-Cam & Drone</span> <a href="#" class="link-btn">Open Drive ↗</a></div>
+            <div class="vault-empty">No external drives linked yet.</div>
           </div>
           <div class="vault-card">
             <h3>Brand Assets & LUTs</h3>
             <p>Logos, lower thirds, typography, color grades.</p>
-            <div class="link-item"><span class="link-label">Agency_LUT_Pack_v2.cube</span> <button class="link-btn">Download</button></div>
-            <div class="link-item"><span class="link-label">Vector_Logos_Master.zip</span> <button class="link-btn">Download</button></div>
+            <div class="vault-empty">No asset packages uploaded yet.</div>
           </div>
         </div>
       </section>
@@ -157,15 +155,15 @@
         <div class="finances-summary">
           <div class="metric-card">
             <span class="metric-label">Monthly Pipeline Revenue</span>
-            <span class="metric-value">$14,800.00</span>
+            <span class="metric-value">$0.00</span>
           </div>
           <div class="metric-card">
             <span class="metric-label">Pending Invoices</span>
-            <span class="metric-value">$3,200.00</span>
+            <span class="metric-value">$0.00</span>
           </div>
           <div class="metric-card">
-            <span class="metric-label">Avg. Rate per Cut</span>
-            <span class="metric-value">$1,850.00</span>
+            <span class="metric-label">Active Projects</span>
+            <span class="metric-value" id="metric-active-count">0</span>
           </div>
         </div>
       </section>
@@ -178,7 +176,7 @@
       <h3>Create New Video Project</h3>
       <div class="form-group">
         <label>Project Title</label>
-        <input type="text" id="p-title" placeholder="e.g. Creator Launch Video #4">
+        <input type="text" id="p-title" placeholder="e.g. Creator Launch Video #1">
       </div>
       <div class="form-group">
         <label>Client / Channel</label>
